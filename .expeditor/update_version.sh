@@ -5,4 +5,4 @@
 
 set -evx
 
-sed -i -r "s/VERSION = \".*\"/VERSION = \"$(cat VERSION)\"/" lib/yaml/safe_load_stream/version.rb
+sed -i -r "s/VERSION = \".*\"/VERSION = \"$(cat VERSION)\"/" lib/k8s/ruby/version.rb
