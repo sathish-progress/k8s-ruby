@@ -15,6 +15,8 @@ github:
 #     trigger: pull_request
 #     description: Pull Request validation tests
 
+rubygems:
+  - yaml-safe_load_stream3
 
 release_branches:
     - main:
@@ -28,4 +30,6 @@ subscriptions:
             - "Version: Skip Bump"
             - "Expeditor: Skip All"
       - bash:.expeditor/update_version.sh:
+          only_if: built_in:bump_version
+      - built_in:build_gem:
           only_if: built_in:bump_version
