@@ -1,0 +1,31 @@
+project:
+  alias: k8s-ruby
+
+# Slack channel in Chef Software slack to send notifications about build failures, etc
+slack:
+  notify_channel:
+    - inspec-notify
+
+github:
+  delete_branch_on_merge: true
+  version_tag_format: v{{version}}
+
+# pipelines:
+#  - verify:
+#     trigger: pull_request
+#     description: Pull Request validation tests
+
+
+release_branches:
+    - main:
+        version_constraint: "*"
+
+subscriptions:
+  - workload: pull_request_merged:{{github_repo}}:{{release_branch}}:*
+    actions:
+      - built_in:bump_version:
+          ignore_labels:
+            - "Version: Skip Bump"
+            - "Expeditor: Skip All"
+      - bash:.expeditor/update_version.sh:
+          only_if: built_in:bump_version
