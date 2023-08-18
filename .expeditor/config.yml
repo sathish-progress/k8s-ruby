@@ -16,7 +16,7 @@ github:
 #     description: Pull Request validation tests
 
 rubygems:
-  - k8s-ruby3
+  - k8s-ruby
 
 release_branches:
     - main:
