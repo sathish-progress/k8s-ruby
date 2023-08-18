@@ -16,7 +16,7 @@ github:
 #     description: Pull Request validation tests
 
 rubygems:
-  - yaml-safe_load_stream3
+  - k8s-ruby3
 
 release_branches:
     - main:
