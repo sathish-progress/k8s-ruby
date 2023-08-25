@@ -23,6 +23,11 @@ release_branches:
         version_constraint: "*"
 
 subscriptions:
+  - workload: pull_request_merged:{{github_repo}}:{{release_branch}}:*
+    actions:
+      # we pull the latest tags from `k8s-ruby/k8s-ruby` hence we don't bump version here.
+      # But we build and publish gems from here
+      - built_in:build_gem
   - workload: project_promoted:{{agent_id}}:*
     actions:
       - built_in:publish_rubygems
